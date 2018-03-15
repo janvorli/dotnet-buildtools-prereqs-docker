@@ -30,7 +30,7 @@ do
         $dockerCrossDepsTag /scripts/cross/build-rootfs.sh $arch $crossToolset $lldb --skipunmount
     docker cp $buildRootFSContainer:/rootfs/. $PWD/rootfs/
     # chmod -R 777 $PWD/rootfs
-    docker rm -f $buildRootFSContainer
+    #docker rm -f $buildRootFSContainer
 
     if [[ ! -d $PWD/rootfs/$arch/bin ]]; then
         echo "Rootfs build failed: missing directory rootfs/$arch/bin"
