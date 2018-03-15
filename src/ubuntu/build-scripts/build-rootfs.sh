@@ -27,10 +27,9 @@ do
     buildRootFSContainer="rootfs-$arch-$crossToolset"
     docker run --privileged --name $buildRootFSContainer -e ROOTFS_DIR=/rootfs/$arch \
         -v $scriptsVolume:/scripts \
-        $dockerCrossDepsTag /scripts/cross/build-rootfs.sh $arch $crossToolset $lldb --skipunmount || \
-        exit 1
+        $dockerCrossDepsTag /scripts/cross/build-rootfs.sh $arch $crossToolset $lldb --skipunmount
     docker cp $buildRootFSContainer:/rootfs/. $PWD/rootfs/
-    chmod -R 777 $PWD/rootfs
+    # chmod -R 777 $PWD/rootfs
     docker rm -f $buildRootFSContainer
 
     if [[ ! -d $PWD/rootfs/$arch/bin ]]; then
