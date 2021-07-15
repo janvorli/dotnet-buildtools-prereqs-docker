@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+SCRIPT=$(readlink -f "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+$SCRIPTPATH/../../../../build-scripts/build-rootfs.sh centos-7 alpine arm64 lldb3.9
